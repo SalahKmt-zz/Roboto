@@ -1,0 +1,14 @@
+Initialisation : 
+1) Dans le terminal, compiler la librairie dans repertoire TP8\ avec un "make"
+2) Dans le terminal, aller dans le repertoire final\, compiler final.cpp avec un "make install"
+
+
+Fonctionnement : 
+1) S'assurer d'avoir des piles fonctionnelles
+2) Placer le Robot sur une des lignes de départ
+3) Activer la tension des moteurs
+4) Appuyer sur la bouton "reset"
+5) Appuyer sur les boutons poussoir pour choisir la séquence du parcours à prendre
+
+Fin:
+1) fermer la tension du robot

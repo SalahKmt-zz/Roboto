@@ -1,0 +1,49 @@
+École Polytechnique de Montréal
+
+Département de génie informatique et génie logiciel
+
+INF1995: Projet initial en ingénierie informatique 
+         et travail en équipe
+
+Grille de correction des programmes:
+
+Identification:
+  Travail Pratique # : Projet
+  Section #  : 2
+  Équipe #   : 3648
+  Correcteur : Etienne Gauthier
+
+Lisibilité/Compréhension:  7/10
+  En-têtes en début de programme et de fonctions  (2 points) : 2
+  Identificateurs significatifs                   (2 points) : 1
+  Commentaires aux endroits stratégiques          (2 points) : 2
+  Indentation et facilité de lecture              (2 points) : 2
+  Broches, ressources matérielles bien identif.   (2 points) : 0
+
+Modularité:   7.25/8
+  Choix des structures de contrôle                (2 points) : 1.5
+  Choix de fonctions                              (4 points): 4
+  Paramètres de fonctions (mode de transmission)  (2 points): 1.75
+
+Fonctionnalité:   0/2
+  Soumission réussie sous SVN (bon endroit,
+                          sans fichiers inutiles) (2 points): 0
+
+Total:   14.25/20
+
+Commentaires:
+
+
+-2 On demandait que la totalité du projet (code principale et librairie) soit déposé dans le répertoire /codeCommun/projet ou projet/.
+
+-2 Aucune identification des broches utilisées pour quel périphérique (moteur, capteur, led, etc.)
+
+-1 Lorsque vous ajustez les valeurs de registres, utilisez les masques définie par la librairie d'AVR (TCCR1B = 0x02; fichier PWM.cpp, TCCR1A = 0x0C; fichier controleTemps.cpp)
+   Même chose Lorsque vous ajuster le sens des roues, utiliszez un identifiant significatif (PORTD |= 0x0c; #define M_RECULER 0x0C -> PORTD |= M_RECULER). Idem pour les ports utilisé dans les fichiers controlDel.cpp et final.cpp
+
+-0.25 Il aurait été préférable d'utiliser un enum, constante ou autre identificateur afin de simplifier la compréhension du premier paramètre des fonctions
+	//direction: false = gauche, true = droite
+		void ControleMoteur::tourner(bool direction, uint8_t vitesse)
+		void ControleMoteur::bouger(bool direction, uint8_t vitesse)
+
+-0.5 Il faut éviter d'utiliser des boucles à l'intérieur d'une machine à état. Celle-ci possède déjà une boucle infinie à sa racine (for(;;)). Tant que l'état ne change pas, cette boucle fait en sorte que le code de l'état en cours sera exécuté en boucle. Je convient que cela implique une augmentation des états de la machine, car chaque condition de boucle (while(condition)) doit etre validé par un etat.
